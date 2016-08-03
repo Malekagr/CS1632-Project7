@@ -3,7 +3,7 @@ extern crate rand;
 use rand::Rng;
 use std::io::Error;
 use std::process;
-//use std::string;
+
 
 #[derive(Clone, Copy)]
 	struct Stats{
@@ -31,12 +31,13 @@ fn get_a_string() -> Result<String, Error> {
     io::stdin().read_line(&mut to_return).expect("FAIL");
     Ok(to_return)
 }
+//generate random number betweeon 0 and 99
 fn get_rand() -> i32{
 	let x: i32 = rand::thread_rng().gen_range(0,99);
 	return x;
 }
 
-
+//use the random val to determine the rock paper scissors from AI
 fn convert_int_to_game_value (r: i32, s: i32) ->  String{
 	// this method will take in three ints and convert them to characters
     let random = get_rand();
@@ -108,6 +109,7 @@ fn play_game (player_guess: String, ai_guess: String, game_data: &mut Stats) {
 	}
 
 }
+//prints out stats of game
 fn end_game(game_data: Stats){
 	let mut win_percent: f32 = (game_data.win_count as f32)/(game_data.game_count as f32);
 	let win_percent_value = win_percent;
